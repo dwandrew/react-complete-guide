@@ -10,9 +10,8 @@ class App extends Component {
       {name: "Brian", age: 22},
       {name: "Charlie", age: 28},
       {name: "Penelope", age: 31}
-
-
-    ]
+    ],
+    showPeople:true
   }
 
   
@@ -27,6 +26,13 @@ class App extends Component {
       })
   }
 
+  togglePeople = () => {
+    this.setState(
+      {showPeople: !this.state.showPeople}
+    )
+
+  }
+
 
 
   render() {
@@ -34,10 +40,12 @@ class App extends Component {
       <div className="App">
         <h1>React app</h1>
         <button onClick = {this.changeNameHandler}>Change name</button>
-        <Person name = {this.state.people[0].name} hage ={this.state.people[0].age}/>
-        <Person name = {this.state.people[1].name} age ={this.state.people[1].age}/>
-        <Person name = {this.state.people[2].name} age ={this.state.people[2].age}/>
-
+        <button onClick = {this.togglePeople}>Toggle People</button>
+        {this.state.showPeople ? <div >
+          <Person name = {this.state.people[0].name} hage ={this.state.people[0].age}/>
+          <Person name = {this.state.people[1].name} age ={this.state.people[1].age}/>
+          <Person name = {this.state.people[2].name} age ={this.state.people[2].age}/>
+        </div> : null}
       
       </div>
     );
